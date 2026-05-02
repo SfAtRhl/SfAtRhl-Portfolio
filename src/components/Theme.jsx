@@ -10,24 +10,22 @@ const ThemeSwitch = () => {
 
   useEffect(() => {
     setMounted(true);
-    const html = document.querySelector("html");
-    if (localStorage.getItem("theme") !== "light") {
-      html?.classList.add("dark");
-      setTheme("dark");
-    } else {
-      html?.classList.remove("dark");
-      setTheme("light");
-    }
-  }, [theme]);
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem("theme");
+    const initialTheme = savedTheme === "light" ? "light" : "dark";
+    html.classList.toggle("dark", initialTheme === "dark");
+    setTheme(initialTheme);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const html = document.documentElement;
+    html.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [mounted, theme]);
 
   const handleModeToggle = () => {
-    if (theme === "light") {
-      setTheme("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      setTheme("light");
-      localStorage.setItem("theme", "light");
-    }
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   if (!mounted) return null;

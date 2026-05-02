@@ -7,6 +7,13 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
   color-scheme: dark;
 }
 
