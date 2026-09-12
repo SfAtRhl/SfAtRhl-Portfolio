@@ -24,7 +24,10 @@ const App = () => {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <div className="relative z-0 dark:bg-primary bg-primary-black">
+        <div
+          className="relative z-0 min-h-screen selection:bg-[var(--selection-bg)]"
+          style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)" }}
+        >
           <Helmet>
             <html lang="en" />
             <title>{title}</title>
@@ -37,12 +40,12 @@ const App = () => {
             <meta name="robots" content="index, follow" />
             <meta
               name="theme-color"
-              content="#0a0c10"
+              content="#080a0f"
               media="(prefers-color-scheme: dark)"
             />
             <meta
               name="theme-color"
-              content="#ffffff"
+              content="#fbfbfc"
               media="(prefers-color-scheme: light)"
             />
             <link rel="canonical" href={`${siteUrl}/`} />
@@ -62,10 +65,8 @@ const App = () => {
             <link rel="icon" type="image/x-icon" href="/favicon.ico" />
             <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
           </Helmet>
-          <div className=" bg-cover bg-no-repeat bg-center dark:bg-primary bg-white">
-            <Navbar />
-            <Hero />
-          </div>
+          <Navbar />
+          <Hero />
           <Works />
           <Contact />
         </div>

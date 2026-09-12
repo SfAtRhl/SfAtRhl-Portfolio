@@ -2,18 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-html {
+:root {
   color-scheme: light;
+  --bg-primary: #fbfbfc;
+  --bg-secondary: #f4f4f7;
+  --text-primary: #0f172a;
+  --text-muted: #334155;
+  --text-subtle: #475569;
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-medium: rgba(15, 23, 42, 0.16);
+  --border-hover: rgba(22, 163, 74, 0.4);
+  --accent: #16a34a;
+  --accent-hover: #15803d;
+  --accent-contrast: #ffffff;
+  --accent-subtle: rgba(22, 163, 74, 0.08);
+  --card-bg: #ffffff;
+  --card-border: rgba(15, 23, 42, 0.08);
+  --input-bg: #ffffff;
+  --input-border: rgba(15, 23, 42, 0.16);
+  --input-placeholder: #64748b;
+  --selection-bg: rgba(22, 163, 74, 0.2);
+  --selection-text: #0f172a;
+  --scrollbar-thumb: rgba(15, 23, 42, 0.2);
+  --scrollbar-thumb-hover: rgba(15, 23, 42, 0.35);
+  --nav-bg: rgba(251, 251, 252, 0.88);
+  --nav-border: rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-hover: 0 20px 30px -10px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(22, 163, 74, 0.2);
 }
 
 html.dark {
   color-scheme: dark;
+  --bg-primary: #080a0f;
+  --bg-secondary: #0d1117;
+  --text-primary: #f8fafc;
+  --text-muted: rgba(248, 250, 252, 0.72);
+  --text-subtle: rgba(248, 250, 252, 0.48);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-hover: rgba(74, 222, 128, 0.35);
+  --accent: #4ade80;
+  --accent-hover: #86efac;
+  --accent-contrast: #0a0c10;
+  --accent-subtle: rgba(74, 222, 128, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.025);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-border: rgba(255, 255, 255, 0.12);
+  --input-placeholder: rgba(248, 250, 252, 0.4);
+  --selection-bg: rgba(74, 222, 128, 0.28);
+  --selection-text: #ffffff;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+  --nav-bg: rgba(8, 10, 15, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --shadow-card: 0 8px 32px -4px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 24px 48px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(74, 222, 128, 0.2);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  caret-color: var(--accent);
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Browser surface: Selection */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+/* Browser surface: Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 2px solid var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Browser surface: Focus rings */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Accessible anchor scroll offset */
+.hash-span {
+  display: block;
+  position: relative;
+  top: -84px;
+  visibility: hidden;
+  height: 0;
+  pointer-events: none;
+}

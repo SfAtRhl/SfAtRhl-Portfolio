@@ -24,6 +24,14 @@ dist-ssr
 *.sw?
 
 .env
+.env.example
 
 # vscode
 .vscode
+.env.*
+.agent
+.claude
+.gemini
+.trae
+.turbo
+.impeccable

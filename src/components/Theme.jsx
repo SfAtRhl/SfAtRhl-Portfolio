@@ -32,47 +32,34 @@ const ThemeSwitch = () => {
 
   return (
     <button
-      className=" z-10 !text-2xl dark:text-white text-black "
-      aria-label={"Theme"}
+      type="button"
+      onClick={handleModeToggle}
+      className="relative z-10 w-9 h-9 rounded-lg flex items-center justify-center transition-colors text-lg border border-[var(--border-subtle)] hover:border-[var(--border-medium)] bg-[var(--card-bg)] text-[var(--text-primary)] hover:bg-[var(--accent-subtle)]"
+      aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+      title={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         {theme === "light" ? (
           <motion.div
-            layout
             key="moon"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ y: -10, opacity: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 700,
-              damping: 30,
-            }}
-            onClick={handleModeToggle}
+            initial={{ opacity: 0, rotate: -30, scale: 0.8 }}
+            animate={{ opacity: 1, rotate: 0, scale: 1 }}
+            exit={{ opacity: 0, rotate: 30, scale: 0.8 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center justify-center"
           >
-            {" "}
-            <FontAwesomeIcon icon={faMoon} />
+            <FontAwesomeIcon icon={faMoon} className="text-amber-500 text-base" />
           </motion.div>
         ) : (
           <motion.div
-            layout
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0, rotate: 180 }}
-            exit={{ y: 10, opacity: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 700,
-              damping: 30,
-            }}
             key="sun"
-            onClick={handleModeToggle}
+            initial={{ opacity: 0, rotate: 30, scale: 0.8 }}
+            animate={{ opacity: 1, rotate: 0, scale: 1 }}
+            exit={{ opacity: 0, rotate: -30, scale: 0.8 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center justify-center"
           >
-            {" "}
-            <FontAwesomeIcon icon={faSun} />
+            <FontAwesomeIcon icon={faSun} className="text-amber-400 text-base" />
           </motion.div>
         )}
       </AnimatePresence>
